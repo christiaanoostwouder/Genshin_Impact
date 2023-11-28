@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77688be9b854c5b43a429582c69d1325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 3354927387829494729, guid: 7d0d0387ad667e7448a67645de076f2e, type: 3}
 --- !u!114 &8300497801233672238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01e986b4d4a18e4b9b02cedd708c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 3354927387829494729, guid: 7d0d0387ad667e7448a67645de076f2e, type: 3}
   speed: 15
   howclose: 50
 --- !u!1 &8717058896627987850
