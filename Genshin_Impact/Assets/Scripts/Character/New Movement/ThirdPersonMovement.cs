@@ -44,7 +44,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            speed = 15f;
+            speed = 10f;
             return;
         }
     }
