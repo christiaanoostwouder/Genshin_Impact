@@ -1,0 +1,37 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 71fbbb3c012480343bff370126d01b81
+=======
+guid: 6a2dcbd3da5744449a747818dfbbd918
+>>>>>>> caa1c4d9929837a89c4cfd43a7e4df8aac06bca2
+PluginImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  iconMap: {}
+  executionOrder: {}
+  defineConstraints: []
+  isPreloaded: 0
+  isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
+  platformData:
+  - first:
+      Any: 
+    second:
+      enabled: 0
+      settings: {}
+  - first:
+      Editor: Editor
+    second:
+      enabled: 1
+      settings:
+        DefaultValueInitialized: true
+  - first:
+      Windows Store Apps: WindowsStoreApps
+    second:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
