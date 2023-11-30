@@ -14,6 +14,9 @@ public class Buoyancy : MonoBehaviour
     void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
+        rb.freezeRotation = true;
+        rb.drag = 2f;
+        rb.constraints = RigidbodyConstraints.FreezeRotationZ;
     }
 
     

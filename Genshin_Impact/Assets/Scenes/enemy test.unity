@@ -431,7 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 483082125}
-  speed: 15
+  speed: 100
   howclose: 25
 --- !u!1 &936095248
 GameObject:
@@ -669,8 +669,8 @@ Transform:
   m_GameObject: {fileID: 1568081248}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.4490185, y: 0.46, z: -5.89}
-  m_LocalScale: {x: 4.048, y: 0.1917, z: 4.4854}
+  m_LocalPosition: {x: 10.9038, y: 0.46, z: -1.0441}
+  m_LocalScale: {x: 67.00907, y: 0.1917, z: 53.62745}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
