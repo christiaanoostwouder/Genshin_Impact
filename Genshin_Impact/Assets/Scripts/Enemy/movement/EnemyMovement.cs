@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Rigidbody rig;
 
-    private NavMeshAgent agent;
+    [SerializeField] private NavMeshAgent agent;
 
 
     void Start()
