@@ -2,60 +2,84 @@ using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
+    [Header("References")]
     public CharacterController controller;
-    public Transform cameraTransform; // Reference to the camera's transform
-    public float speed = 6f;
-    public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity;
-    public float gravity = -9.81f; // You can adjust this value based on the strength of gravity in your game
+    public Transform cameraTransform; // Reference to the Maincamera's transform
 
-    // Character controller variables
-    Vector3 velocity;
+    [Header("Jump Settings")]
+    public float gravity = -9.81f;
+    public float jumpForce;
+
+    [Header("Dash Settings")]
+    public float dashSpeed;
+    public float normSpeed;
+    public float dashTime;
+
+    private float speed;
+    private Vector3 velocity;
+    private float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
 
     void Update()
     {
-        // Calculate gravity
-        ApplyGravity();
-
-        // Get input values
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
+
+
+        if (controller.isGrounded)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                Jump();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                StartDash();
+            }
+            else if (inputDirection.magnitude == 0)
+            {
+                speed = normSpeed;
+            }
+        }
+        else if (velocity.y > gravity)
+        {
+            ApplyGravity();
+        }
+
         if (inputDirection.magnitude >= 0.1f)
         {
-            // Calculate the target angle based on input and camera direction
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-
-            // Rotate the player
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            // Move the player in the camera's forward direction
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            // Move the controller
             controller.Move((moveDirection.normalized * speed + velocity) * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            speed = 30f;
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            speed = 15f;
-            return;
-        }
+        //apply velocity to movment
+        controller.Move(velocity * Time.deltaTime);
     }
 
     void ApplyGravity()
     {
-        // Apply gravity
-        velocity.y += gravity * Time.deltaTime;
+        velocity.y += gravity * 3 * Time.deltaTime;
+    }
 
-        // Move the controller with gravity
-        controller.Move(velocity * Time.deltaTime);
+    void Jump()
+    {
+        velocity.y = jumpForce;
+    }
+
+    public void StartDash()
+    {
+        speed = dashSpeed;
+        Invoke("StopDash", dashTime);
+    }
+
+    public void StopDash()
+    {
+        speed = normSpeed * 2;
     }
 }
 
