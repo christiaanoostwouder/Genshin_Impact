@@ -36,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
             rig.velocity = Vector3.zero;
         }
 
-        if (dis <= 7) 
+        if (dis <= 22) 
         {
             rig.velocity = Vector3.zero;
         }
