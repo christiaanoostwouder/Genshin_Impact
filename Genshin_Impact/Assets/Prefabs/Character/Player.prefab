@@ -865,11 +865,11 @@ MonoBehaviour:
   controller: {fileID: 7525495125075027791}
   cameraTransform: {fileID: 0}
   gravity: -9.81
-  jumpForce: 8
+  jumpForce: 12
   dashSpeed: 100
   normSpeed: 10
   dashTime: 0.1
---- !u!1001 &6503916479161173487
+--- !u!1001 &975771831309051745
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
