@@ -49,7 +49,11 @@ public class EnemyMovement : MonoBehaviour
             
         }
 
+<<<<<<< HEAD
         else
+=======
+        if (dis <= 22) 
+>>>>>>> b1aea21112826bb1a1b804378b77d2eca5c35df4
         {
             agent.isStopped = false;
         }
