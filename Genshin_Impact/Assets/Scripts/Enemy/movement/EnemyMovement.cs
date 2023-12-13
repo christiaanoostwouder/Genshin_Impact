@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -15,30 +17,41 @@ public class EnemyMovement : MonoBehaviour
 
     private Rigidbody rig;
 
+    [SerializeField] private NavMeshAgent agent;
+
 
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+
         player = GameObject.Find("Player").transform;
+
         rig = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
+        
         dis = Vector3.Distance(player.position, transform.position);
 
-        if(dis <= howclose) 
+        if(dis > 10 || dis < 50) 
         {
-            rig.AddForce(transform.forward * speed * Time.deltaTime);
+            agent.destination = player.position;
+            
         }
 
-        if (dis > howclose)
+        
+
+        if (dis <= 10) 
         {
-            rig.velocity = Vector3.zero;
+            Debug.Log("distance");
+            agent.isStopped = true;
+            
         }
 
-        if (dis <= 7) 
+        else
         {
-            rig.velocity = Vector3.zero;
+            agent.isStopped = false;
         }
 
     }
