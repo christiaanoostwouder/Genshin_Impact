@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
@@ -6,28 +7,24 @@ public class ThirdPersonMovement : MonoBehaviour
     [Header("References")]
     public CharacterController controller;
     public Transform cameraTransform; // Reference to the Maincamera's transform
+    public GameObject bow;
     [SerializeField] CinemachineFreeLook VirtualCam3rd;
-    [SerializeField] CinemachineVirtualCamera VirtualCamAttck;
+    [SerializeField] CinemachineFreeLook VirtualCamAttck;
 
     [Header("Jump Settings")]
     public float jumpForce;
 
     [Header("Dash Settings")]
     public float dashSpeed;
+    public float runSpeed;
     public float normSpeed;
     public float dashTime;
-
-    [Header("ShootingMode")]
-    public float mouseSensitivity;
-    public float lookXLimit;
-    public float xRotation;
-    private float mouseX;
-    private float mouseY;
 
     private float speed;
     private Vector3 velocity;
     private float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
+    private Vector3 inputDirection;
 
 
     private void OnEnable()
@@ -40,18 +37,17 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        Vector3 inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
+        inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            CameraSwitch.SwitchCam(VirtualCam3rd, VirtualCamAttck);
+            speed = normSpeed * CameraSwitch.SwitchCam(VirtualCam3rd, VirtualCamAttck, speed);
         }
 
         if (controller.isGrounded)
         {
+            //Check for Jump or Dash or make speed normal again
             if (Input.GetButtonDown("Jump"))
             {
                 Jump();
@@ -65,6 +61,7 @@ public class ThirdPersonMovement : MonoBehaviour
                 speed = normSpeed;
             }
         }
+        // vertical velocity will never grow bigger than gravity itself
         else if (velocity.y > GamePhysics.gravity)
         {
             ApplyGravity();
@@ -72,22 +69,28 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (CameraSwitch.shootingMode == true)
         {
-
+            //update player rotation based on camera rotation
+            float targetAngle = cameraTransform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            bow.transform.localRotation = Quaternion.Euler(cameraTransform.rotation.x , 15f, 0f);
         }
 
         if (inputDirection.magnitude >= 0.1f)
         {
-            if (CameraSwitch.shootingMode == false)
-            {
-                ThirdPersonMove(inputDirection);
-            }
-            else if (CameraSwitch.shootingMode == true)
+            if (CameraSwitch.shootingMode == true)
             {
                 AttackModeMove(inputDirection);
+            }
+            else
+            {
+                ThirdPersonMove(inputDirection);
             }
         }
         //apply velocity to movment
         controller.Move(velocity * Time.deltaTime);
+
+        Debug.Log(speed);
     }
 
 
@@ -103,6 +106,12 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void AttackModeMove(Vector3 inputDirection)
     {
+        float targetAngle = cameraTransform.eulerAngles.y;
+        // Calculate the move direction in the world space based on the camera's rotation
+        Vector3 moveDirection = new Vector3(inputDirection.x, 0f, inputDirection.z).normalized;
+        moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * moveDirection;
+
+        controller.Move((moveDirection * speed + velocity) * Time.deltaTime);
 
     }
 
@@ -119,12 +128,13 @@ public class ThirdPersonMovement : MonoBehaviour
     public void StartDash()
     {
         speed = dashSpeed;
+        Debug.Log(speed);
         Invoke("StopDash", dashTime);
     }
 
     public void StopDash()
     {
-        speed = normSpeed * 2;
+        speed = runSpeed;
     }
 }
 
