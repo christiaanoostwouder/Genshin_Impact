@@ -23,7 +23,7 @@ public class shoot : MonoBehaviour
     {
         if (CameraSwitch.shootingMode == true)
         {
-            if (dmgMult! >= maxDmgMult)
+            if (dmgMult !>= maxDmgMult)
             {
                 dmgMult += 1 * Time.deltaTime;
             }
