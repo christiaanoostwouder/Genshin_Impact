@@ -5,12 +5,16 @@ using UnityEngine;
 public class shoot : MonoBehaviour
 {
     public float damageTime;
-    public float damage;
     public GameObject prefab;
     public Camera virtualCamera;
-    [SerializeField] public float shootCooldown = 1f;
+    public float shootCooldown = 1f;
     public float shootTimer;
     private bool hasFired;
+
+    public Transform invAim;
+    public float TurnSpeed = 5f; 
+    public float VerticalRotMin = -80f; 
+    public float VerticalRotMax = 80f; 
 
     // Update is called once per frame
     void Update()
@@ -42,6 +46,26 @@ public class shoot : MonoBehaviour
 
             Debug.Log("release");
             shootTimer = shootCooldown;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        float rotInputX = Input.GetAxis("Mouse X");
+        float rotInputY = Input.GetAxis("Mouse Y");
+
+        Vector3 rot = transform.eulerAngles;
+        rot.y += rotInputX * TurnSpeed;
+        transform.rotation = Quaternion.Euler(rot);
+
+        if (invAim != null)
+        {
+            rot = invAim.localEulerAngles;
+            rot.x -= rotInputY * TurnSpeed;
+            if (rot.x > 180)
+                rot.x -= 360;
+            rot.x = Mathf.Clamp(rot.x, VerticalRotMin, VerticalRotMax);
+            invAim.localRotation = Quaternion.Euler(rot);
         }
     }
 
