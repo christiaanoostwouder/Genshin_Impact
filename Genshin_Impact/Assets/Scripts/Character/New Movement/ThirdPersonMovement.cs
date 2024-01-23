@@ -90,7 +90,7 @@ public class ThirdPersonMovement : MonoBehaviour
         //apply velocity to movment
         controller.Move(velocity * Time.deltaTime);
 
-        Debug.Log(speed);
+        //Debug.Log(speed);
     }
 
 

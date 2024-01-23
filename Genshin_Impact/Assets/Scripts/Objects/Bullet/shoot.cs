@@ -23,7 +23,7 @@ public class shoot : MonoBehaviour
     {
         if (CameraSwitch.shootingMode == true)
         {
-            if (dmgMult !>= maxDmgMult)
+            if (dmgMult <= maxDmgMult)
             {
                 dmgMult += 1 * Time.deltaTime;
             }
@@ -32,6 +32,7 @@ public class shoot : MonoBehaviour
             {
                 Fire(baseDmg * dmgMult);
             }
+            
         }
     }
 
@@ -40,7 +41,10 @@ public class shoot : MonoBehaviour
         Debug.Log("je hebt geschoten");
         Vector3 shootDirection = cam.forward;
         GameObject ob = Instantiate(arrow, bow.position, Quaternion.LookRotation(shootDirection));
+
+        Debug.Log(damage);
         ob.GetComponent<Arrow>().dmg = damage;
+       
         dmgMult = 0;
         canFire = false;
         Invoke("ChangeFire", coolDown);
