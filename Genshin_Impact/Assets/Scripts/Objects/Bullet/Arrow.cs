@@ -19,4 +19,12 @@ public class Arrow : MonoBehaviour
     {
         rb.velocity = transform.forward * speed;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+        Debug.Log(dmg);
+        enemyHealth.TakeDamage(dmg);
+        Destroy(gameObject);
+    }
 }
