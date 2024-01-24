@@ -3,12 +3,12 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     public Transform player;
-    public float accelerationSpeed = 5f;
+    public float accelerationSpeed = 6f;
     public float maxSpeed = 10f;
-    public float destroyDelay = 6f;
+    public float destroyDelay = 10f;
 
     private Rigidbody rocketRigidbody;
-    private float accelerationTimer = 0.5f;
+    private float accelerationTimer = 1f;
     private bool shootingUp = true;
 
     private void Start()
@@ -28,6 +28,7 @@ public class Rocket : MonoBehaviour
         {
             if (shootingUp)
             {
+                this.gameObject.transform.LookAt(player);
                 // Shoot up for the first second
                 rocketRigidbody.AddForce(Vector3.up * accelerationSpeed, ForceMode.Acceleration);
 

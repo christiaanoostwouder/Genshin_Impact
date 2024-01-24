@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 25f63b6aa6db58b4ba7e52e76dbbbb65, type: 2}
+--- !u!1 &67184599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 67184600}
+  m_Layer: 0
+  m_Name: RocketSpawnPoint 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &67184600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67184599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.32, y: 5.37, z: -0.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5599098375800237608}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &414909332
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1179045628}
   m_Layer: 0
-  m_Name: RocketSpawnPoint
+  m_Name: RocketSpawnPoint 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -484,12 +515,31 @@ Transform:
   m_GameObject: {fileID: 1179045627}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.3, z: -0.97}
+  m_LocalPosition: {x: 1.14, y: 5.43, z: -0.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5599098375800237608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1258228649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8094428060517842776, guid: c9c20446c7d34a74b87e8c2d9228e685,
+    type: 3}
+  m_PrefabInstance: {fileID: 5599098375800237607}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1258228652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258228649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77688be9b854c5b43a429582c69d1325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &1652043202
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,6 +836,11 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8173441311950051753, guid: c9c20446c7d34a74b87e8c2d9228e685,
+        type: 3}
+      propertyPath: howclose
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 8306558531110706421, guid: c9c20446c7d34a74b87e8c2d9228e685,
         type: 3}
       propertyPath: m_Name
@@ -793,15 +848,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8980305446193677055, guid: c9c20446c7d34a74b87e8c2d9228e685,
         type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 5599098375800237610}
+    - target: {fileID: 8980305446193677055, guid: c9c20446c7d34a74b87e8c2d9228e685,
+        type: 3}
       propertyPath: Rocket
       value: 
-      objectReference: {fileID: 8442268633839354293, guid: 1e4fec4101f62794487cadce0cb90925,
+      objectReference: {fileID: 4897302703101662036, guid: 1637b40d17a8e624a89079be72d949ae,
         type: 3}
     - target: {fileID: 8980305446193677055, guid: c9c20446c7d34a74b87e8c2d9228e685,
         type: 3}
       propertyPath: RocketSpawn
       value: 
       objectReference: {fileID: 1179045628}
+    - target: {fileID: 8980305446193677055, guid: c9c20446c7d34a74b87e8c2d9228e685,
+        type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8980305446193677055, guid: c9c20446c7d34a74b87e8c2d9228e685,
+        type: 3}
+      propertyPath: RocketSpawn1
+      value: 
+      objectReference: {fileID: 1179045628}
+    - target: {fileID: 8980305446193677055, guid: c9c20446c7d34a74b87e8c2d9228e685,
+        type: 3}
+      propertyPath: RocketSpawn2
+      value: 
+      objectReference: {fileID: 67184600}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -809,11 +884,25 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1179045628}
-    m_AddedComponents: []
+    - targetCorrespondingSourceObject: {fileID: 8387359937082419869, guid: c9c20446c7d34a74b87e8c2d9228e685,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 67184600}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8094428060517842776, guid: c9c20446c7d34a74b87e8c2d9228e685,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1258228652}
   m_SourcePrefab: {fileID: 100100000, guid: c9c20446c7d34a74b87e8c2d9228e685, type: 3}
 --- !u!4 &5599098375800237608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8387359937082419869, guid: c9c20446c7d34a74b87e8c2d9228e685,
+    type: 3}
+  m_PrefabInstance: {fileID: 5599098375800237607}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &5599098375800237610 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 4660676226295766656, guid: c9c20446c7d34a74b87e8c2d9228e685,
     type: 3}
   m_PrefabInstance: {fileID: 5599098375800237607}
   m_PrefabAsset: {fileID: 0}

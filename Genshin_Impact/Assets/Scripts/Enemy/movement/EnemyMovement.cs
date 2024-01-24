@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        
+        this.gameObject.transform.LookAt(player);
         dis = Vector3.Distance(player.position, transform.position);
 
         if(dis > 10 || dis < 50) 
@@ -42,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
 
         
 
-        if (dis <= 10) 
+        if (dis <= 15) 
         {
             Debug.Log("distance");
             agent.isStopped = true;

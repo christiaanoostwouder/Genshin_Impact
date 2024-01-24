@@ -1,69 +1,80 @@
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyAttack : MonoBehaviour
 {
     private EnemyMovement enemymovement;
-    
+    public NavMeshAgent agent;
 
     public float attackCooldown = 10f;
     public float attackRange = 100f;
     private float nextAttackTime = 1f;
 
     public float RocketTime;
-    private float timer = 5f;
+    private float timer = 3f; // Reduced the timer to 3 seconds
 
     private Transform player;
     public GameObject Rocket;
+    public Transform RocketSpawn1;
+    public Transform RocketSpawn2;
 
-    public Transform RocketSpawn;
+    private int rocketsToShoot = 7; // Number of rockets to shoot
+    private int rocketsShot = 0; // Counter for the rockets shot
 
     void Start()
     {
         player = GameObject.FindWithTag("Player")?.transform;
-
+        agent = GetComponent<NavMeshAgent>();
         enemymovement = GetComponent<EnemyMovement>();
-
     }
 
     void Update()
     {
         if (player != null && Vector3.Distance(transform.position, player.position) < attackRange)
         {
-            if (Time.time >= nextAttackTime)
+            if (Time.time >= nextAttackTime && rocketsShot < rocketsToShoot)
             {
-                doAttack();
+                StartCoroutine(ShootRockets());
                 nextAttackTime = Time.time + attackCooldown;
             }
         }
-        
     }
 
-
-
-    private void doAttack()
+    IEnumerator ShootRockets()
     {
-        RocketTime -= Time.deltaTime;
-        GameObject RocketObj = Instantiate(Rocket, RocketSpawn.transform.position, RocketSpawn.transform.rotation)as GameObject;
-        Rigidbody RocketRig = RocketObj.GetComponent<Rigidbody>();
+        agent.isStopped = true;
 
-        if (RocketTime < 0f) return;
+        float timeInterval = timer / rocketsToShoot;
 
-        RocketTime = timer;
+        while (rocketsShot < rocketsToShoot && RocketTime < timer)
+        {
+            RocketTime += Time.deltaTime;
 
-        float speed = enemymovement.speed;
+            if (RocketTime >= timeInterval * rocketsShot)
+            {
+                rocketsShot++; // Increment the counter when a rocket is shot
 
-        RocketRig.AddForce(RocketRig.transform.forward * speed);
-        Destroy(RocketObj, 0.1f);
+                // Alternate between two spawn points
+                Transform currentSpawnPoint = (rocketsShot % 2 == 0) ? RocketSpawn1 : RocketSpawn2;
+
+                GameObject RocketObj = Instantiate(Rocket, currentSpawnPoint.position, currentSpawnPoint.rotation) as GameObject;
+                Rigidbody RocketRig = RocketObj.GetComponent<Rigidbody>();
+
+                float speed = enemymovement.speed;
+
+                RocketRig.AddForce(RocketObj.transform.forward * speed);
+                Destroy(RocketObj, 3f); // Adjust the time the rocket stays before being destroyed
+            }
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(4f); // Pause for 4 seconds
+
+        // Reset the counter and allow the agent to move again after shooting all rockets
+        rocketsShot = 0;
+        RocketTime = 0f;
+        agent.isStopped = false;
     }
-        
-
-}        
-       
-        
-
-    
-        
-    
-
+}
