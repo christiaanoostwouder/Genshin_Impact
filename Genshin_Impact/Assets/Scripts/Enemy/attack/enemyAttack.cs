@@ -17,6 +17,8 @@ public class EnemyAttack : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player")?.transform;
 
+        
+
     }
 
     void Update()
@@ -31,9 +33,32 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+   
+
    private void doRandomAttack()
     {
         int randomAttack = Random.Range(1, 4);
+
+        switch(randomAttack)
+        {
+            case 1:
+                bulletRain.executeAttack();
+                break;
+
+            case 2:
+                if (skyBomb != null)
+                {
+
+                }
+                break;
+
+            case 3:
+                if(rocketAttack != null)
+                {
+
+                }
+                break;
+        }
         
     }
 
