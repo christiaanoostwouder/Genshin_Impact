@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class shoot : MonoBehaviour
+public class shooting : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject arrow;
@@ -32,7 +30,7 @@ public class shoot : MonoBehaviour
             {
                 Fire(baseDmg * dmgMult);
             }
-            
+
         }
     }
 
@@ -44,7 +42,7 @@ public class shoot : MonoBehaviour
 
         Debug.Log(damage);
         ob.GetComponent<Arrow>().dmg = damage;
-       
+
         dmgMult = 0;
         canFire = false;
         Invoke("ChangeFire", coolDown);

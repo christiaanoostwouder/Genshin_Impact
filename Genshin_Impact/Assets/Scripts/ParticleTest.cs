@@ -15,7 +15,7 @@ public class ParticleTest : MonoBehaviour
             newtext.GetComponent<Rigidbody>().AddForce(Vector3.up * 10);
             newtext.GetComponent<TextMesh>().characterSize = Random.Range(0.1f, 0.2f);
             newtext.GetComponent<TextMesh>().fontSize = 100;
-            newtext.GetComponent<TextMesh>().text = other.GetComponent<Arrow>().dmg.ToString();
+            newtext.GetComponent<TextMesh>().text = Mathf.Round(other.GetComponent<Arrow>().dmg).ToString();
             Destroy(other.gameObject);
             Destroy(newtext, 1f);
         }
