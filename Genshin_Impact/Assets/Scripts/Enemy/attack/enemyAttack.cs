@@ -1,23 +1,29 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public BulletRain bulletRain;
-    public RocketAttack rocketAttack;
-    public SkyBomb skyBomb;
+    private EnemyMovement enemymovement;
+    
 
-    public float attackCooldown = 2f;
-    public float attackRange = 3f;
-    private float nextAttackTime = 0f;
+    public float attackCooldown = 10f;
+    public float attackRange = 100f;
+    private float nextAttackTime = 1f;
+
+    public float RocketTime;
+    private float timer = 5f;
 
     private Transform player;
+    public GameObject Rocket;
+
+    public Transform RocketSpawn;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player")?.transform;
 
-        
+        enemymovement = GetComponent<EnemyMovement>();
 
     }
 
@@ -27,40 +33,31 @@ public class EnemyAttack : MonoBehaviour
         {
             if (Time.time >= nextAttackTime)
             {
-                doRandomAttack();
+                doAttack();
                 nextAttackTime = Time.time + attackCooldown;
             }
         }
-    }
-
-   
-
-   private void doRandomAttack()
-    {
-        int randomAttack = Random.Range(1, 4);
-
-        switch(randomAttack)
-        {
-            case 1:
-                bulletRain.executeAttack();
-                break;
-
-            case 2:
-                if (skyBomb != null)
-                {
-
-                }
-                break;
-
-            case 3:
-                if(rocketAttack != null)
-                {
-
-                }
-                break;
-        }
         
     }
+
+
+
+    private void doAttack()
+    {
+        RocketTime -= Time.deltaTime;
+        GameObject RocketObj = Instantiate(Rocket, RocketSpawn.transform.position, RocketSpawn.transform.rotation)as GameObject;
+        Rigidbody RocketRig = RocketObj.GetComponent<Rigidbody>();
+
+        if (RocketTime < 0f) return;
+
+        RocketTime = timer;
+
+        float speed = enemymovement.speed;
+
+        RocketRig.AddForce(RocketRig.transform.forward * speed);
+        Destroy(RocketObj, 0.1f);
+    }
+        
 
 }        
        
