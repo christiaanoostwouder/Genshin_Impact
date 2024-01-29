@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a01f412a1dcbddd4da6baa5704441803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetHeight: 3
+  targetHeight: 20
   buoyancyForce: 5
   proportionalFactor: 0.5
   dampingFactor: 0.2
