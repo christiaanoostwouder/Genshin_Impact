@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -826,6 +826,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3074530159112884742, guid: cb4bfadc5f63942428f1fb52014d40c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 145181716b8c6c24892e17a8cac5b546, type: 2}
     - target: {fileID: 4351052088807725289, guid: cb4bfadc5f63942428f1fb52014d40c2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -931,12 +936,12 @@ PrefabInstance:
     - target: {fileID: 1166366893069922453, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001860223
+      value: 0.000000018602229
       objectReference: {fileID: 0}
     - target: {fileID: 1166366893069922453, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000049021796
+      value: -0.000000004902179
       objectReference: {fileID: 0}
     - target: {fileID: 1269598932207087460, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
@@ -1026,12 +1031,12 @@ PrefabInstance:
     - target: {fileID: 6238325988354509096, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000010749347
+      value: -0.0000000010749347
       objectReference: {fileID: 0}
     - target: {fileID: 6238325988354509096, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -3.158844e-11
+      value: 3.158844e-11
       objectReference: {fileID: 0}
     - target: {fileID: 7125379013474537898, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
