@@ -225,10 +225,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalScale: {x: 10, y: 1, z: 10}
 =======
   m_LocalScale: {x: 5, y: 5, z: 5}
 >>>>>>> d3b99933b29fbed26253e827cef3a3b908c554c5
+=======
+  m_LocalScale: {x: 10, y: 1, z: 10}
+>>>>>>> da20bfe3c64509f7e449ac03f07ccb25f9d8d097
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -457,12 +461,16 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> da20bfe3c64509f7e449ac03f07ccb25f9d8d097
 --- !u!4 &1276550247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3030442675725554740, guid: 2087b322a4b97c2449acc9247e6c78ba,
     type: 3}
   m_PrefabInstance: {fileID: 6919321161186797237}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 =======
 --- !u!1 &1276550244
 GameObject:
@@ -637,6 +645,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
 >>>>>>> d3b99933b29fbed26253e827cef3a3b908c554c5
+=======
+>>>>>>> da20bfe3c64509f7e449ac03f07ccb25f9d8d097
 --- !u!1 &1629812298
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +859,9 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> da20bfe3c64509f7e449ac03f07ccb25f9d8d097
 --- !u!1001 &1791456966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1180,24 +1193,36 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bf7811ea31f9864ca80f789ac82cebb, type: 3}
+<<<<<<< HEAD
 =======
 >>>>>>> d3b99933b29fbed26253e827cef3a3b908c554c5
+=======
+>>>>>>> da20bfe3c64509f7e449ac03f07ccb25f9d8d097
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 6919321161186797237}
 =======
   - {fileID: 1276550247}
 >>>>>>> d3b99933b29fbed26253e827cef3a3b908c554c5
+=======
+  - {fileID: 6919321161186797237}
+>>>>>>> da20bfe3c64509f7e449ac03f07ccb25f9d8d097
   - {fileID: 1137947074}
   - {fileID: 1081674814}
   - {fileID: 1682817518}
   - {fileID: 1182069842}
   - {fileID: 1629812302}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 1791456966}
   - {fileID: 7923846383876290795}
 =======
 >>>>>>> d3b99933b29fbed26253e827cef3a3b908c554c5
+=======
+  - {fileID: 1791456966}
+  - {fileID: 7923846383876290795}
+>>>>>>> da20bfe3c64509f7e449ac03f07ccb25f9d8d097

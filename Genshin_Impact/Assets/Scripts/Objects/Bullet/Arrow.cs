@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
@@ -18,5 +16,13 @@ public class Arrow : MonoBehaviour
     void Update()
     {
         rb.velocity = transform.forward * speed;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+        Debug.Log(dmg);
+        enemyHealth.TakeDamage(dmg);
+        Destroy(gameObject);
     }
 }

@@ -60,7 +60,7 @@ public class EnemyAttack : MonoBehaviour
             if (RocketTime >= timeInterval * rocketsShot)
             {
                 animator.SetBool("Attack", true);
-                animator.SetBool("Idle", false) ;
+                
                 rocketsShot++;
 
                 Transform currentSpawnPoint = (rocketsShot % 2 == 0) ? RocketSpawn1 : RocketSpawn2;
@@ -76,7 +76,7 @@ public class EnemyAttack : MonoBehaviour
             else
             {
                 animator.SetBool("Attack", false);
-                animator.SetBool("Idle", true);
+                
             }
 
             yield return null;
