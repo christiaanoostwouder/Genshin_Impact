@@ -4,8 +4,9 @@ using System.Collections;
 
 public class EnemyAttack : MonoBehaviour
 {
-    private EnemyMovement enemymovement;
     
+    private EnemyMovement enemymovement;
+    public Animator animator;
 
     public float attackCooldown = 10f;
     public float attackRange = 100f;
@@ -39,6 +40,7 @@ public class EnemyAttack : MonoBehaviour
             if (Time.time >= nextAttackTime && rocketsShot < rocketsToShoot)
             {
                 // Set isRocketAttack to true when starting the rocket attack
+                animator.SetTrigger("Attack");
                 isRocketAttack = true;
                 StartCoroutine(ShootRockets());
                 nextAttackTime = Time.time + attackCooldown;
@@ -48,8 +50,8 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator ShootRockets()
     {
-        
 
+        
         float timeInterval = timer / rocketsToShoot;
 
         while (rocketsShot < rocketsToShoot && RocketTime < timer)
@@ -58,6 +60,9 @@ public class EnemyAttack : MonoBehaviour
 
             if (RocketTime >= timeInterval * rocketsShot)
             {
+                
+                animator.SetBool("Idle", false);
+
                 rocketsShot++;
 
                 Transform currentSpawnPoint = (rocketsShot % 2 == 0) ? RocketSpawn1 : RocketSpawn2;
@@ -69,6 +74,12 @@ public class EnemyAttack : MonoBehaviour
 
                 RocketRig.AddForce(RocketObj.transform.forward * speed);
                 
+            }
+            else
+            {
+                
+                animator.SetBool("Idle", true);
+
             }
 
             yield return null;

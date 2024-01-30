@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Genshin_Impact/Assets/preFab/bullet.prefab.meta
+guid: 483d254b9fe14804dbb520cacf0709b3
+=======
 guid: 2087b322a4b97c2449acc9247e6c78ba
+>>>>>>> da20bfe3c64509f7e449ac03f07ccb25f9d8d097:Genshin_Impact/Assets/Prefabs/Character/Main Camera.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
