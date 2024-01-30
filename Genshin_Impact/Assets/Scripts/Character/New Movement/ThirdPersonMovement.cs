@@ -8,6 +8,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public Transform ruinDrake;
     public Transform cameraTransform; // Reference to the Maincamera's transform
     public GameObject bow;
+    [SerializeField] private Animator animator;
     [SerializeField] CinemachineFreeLook VirtualCam3rd;
     [SerializeField] CinemachineFreeLook VirtualCamAttck;
 
@@ -73,7 +74,7 @@ public class ThirdPersonMovement : MonoBehaviour
             float targetAngle = cameraTransform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
+            animator.SetBool("ShootingAnim", true);
         }
 
         if (inputDirection.magnitude >= 0.1f)

@@ -6,6 +6,7 @@ public class shooting : MonoBehaviour
     [SerializeField] private GameObject arrow;
     [SerializeField] private Transform bow;
     [SerializeField] private Transform cam;
+    [SerializeField] private Animator animator;
 
     [Header("Damage")]
     [SerializeField] private float baseDmg;
@@ -15,6 +16,9 @@ public class shooting : MonoBehaviour
     [Header("Reload")]
     [SerializeField] private float coolDown;
     private bool canFire = true;
+
+    private bool ChargingState;
+    private bool ReleaseState;
 
     // Update is called once per frame
     void Update()
