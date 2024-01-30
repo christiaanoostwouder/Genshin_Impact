@@ -18,14 +18,13 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody rig;
 
     [SerializeField] private NavMeshAgent agent;
-
+    private EnemyAttack attack;
 
     void Start()
     {
+        attack = GetComponent<EnemyAttack>();
         agent = GetComponent<NavMeshAgent>();
-
         player = GameObject.Find("Player").transform;
-
         rig = GetComponent<Rigidbody>();
     }
 
@@ -34,27 +33,20 @@ public class EnemyMovement : MonoBehaviour
         this.gameObject.transform.LookAt(player);
         dis = Vector3.Distance(player.position, transform.position);
 
-        if(dis > 10 || dis < 50) 
+        if (dis > 5 || dis < 50)
         {
             agent.destination = player.position;
-            
         }
 
-        
-
-        if (dis <= 15) 
+        // Check if the rocket attack is happening, stop the agent if true
+        if (dis <= 15 || attack.IsRocketAttack())
         {
             Debug.Log("distance");
             agent.isStopped = true;
-            
         }
-
         else
         {
             agent.isStopped = false;
         }
-
     }
-
-    
 }

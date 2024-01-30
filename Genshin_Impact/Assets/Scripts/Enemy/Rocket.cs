@@ -5,7 +5,9 @@ public class Rocket : MonoBehaviour
     public Transform player;
     public float accelerationSpeed = 6f;
     public float maxSpeed = 10f;
-    public float destroyDelay = 10f;
+    public float destroyDelay = 20f;
+
+    public ParticleSystem explEffect;
 
     private Rigidbody rocketRigidbody;
     private float accelerationTimer = 1f;
@@ -13,6 +15,7 @@ public class Rocket : MonoBehaviour
 
     private void Start()
     {
+        explEffect = GetComponent<ParticleSystem>();
         rocketRigidbody = GetComponent<Rigidbody>();
         player = GameObject.FindWithTag("Player")?.transform;
 
@@ -61,11 +64,14 @@ public class Rocket : MonoBehaviour
         // Check if the collision is with an object you want to destroy the rocket on
         if (collision.gameObject.CompareTag("Obstacle"))
         {
+            
+            explEffect.Play();
             DestroyRocket();
         }
         else
         {
-            Destroy(gameObject, destroyDelay);
+            explEffect.Play();
+            Destroy(gameObject, 10f);
         }
     }
 

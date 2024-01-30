@@ -5,27 +5,30 @@ using System.Collections;
 public class EnemyAttack : MonoBehaviour
 {
     private EnemyMovement enemymovement;
-    public NavMeshAgent agent;
+    
 
     public float attackCooldown = 10f;
     public float attackRange = 100f;
     private float nextAttackTime = 1f;
 
     public float RocketTime;
-    private float timer = 3f; // Reduced the timer to 3 seconds
+    private float timer = 3f;
 
     private Transform player;
     public GameObject Rocket;
     public Transform RocketSpawn1;
     public Transform RocketSpawn2;
 
-    private int rocketsToShoot = 7; // Number of rockets to shoot
-    private int rocketsShot = 0; // Counter for the rockets shot
+    private int rocketsToShoot = 7;
+    private int rocketsShot = 0;
+
+    // New variable to track whether the rocket attack is happening
+    private bool isRocketAttack = false;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player")?.transform;
-        agent = GetComponent<NavMeshAgent>();
+        
         enemymovement = GetComponent<EnemyMovement>();
     }
 
@@ -35,6 +38,8 @@ public class EnemyAttack : MonoBehaviour
         {
             if (Time.time >= nextAttackTime && rocketsShot < rocketsToShoot)
             {
+                // Set isRocketAttack to true when starting the rocket attack
+                isRocketAttack = true;
                 StartCoroutine(ShootRockets());
                 nextAttackTime = Time.time + attackCooldown;
             }
@@ -43,7 +48,7 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator ShootRockets()
     {
-        agent.isStopped = true;
+        
 
         float timeInterval = timer / rocketsToShoot;
 
@@ -53,9 +58,8 @@ public class EnemyAttack : MonoBehaviour
 
             if (RocketTime >= timeInterval * rocketsShot)
             {
-                rocketsShot++; // Increment the counter when a rocket is shot
+                rocketsShot++;
 
-                // Alternate between two spawn points
                 Transform currentSpawnPoint = (rocketsShot % 2 == 0) ? RocketSpawn1 : RocketSpawn2;
 
                 GameObject RocketObj = Instantiate(Rocket, currentSpawnPoint.position, currentSpawnPoint.rotation) as GameObject;
@@ -64,17 +68,25 @@ public class EnemyAttack : MonoBehaviour
                 float speed = enemymovement.speed;
 
                 RocketRig.AddForce(RocketObj.transform.forward * speed);
-                Destroy(RocketObj, 3f); // Adjust the time the rocket stays before being destroyed
+                
             }
 
             yield return null;
         }
 
-        yield return new WaitForSeconds(4f); // Pause for 4 seconds
+        yield return new WaitForSeconds(4f);
 
-        // Reset the counter and allow the agent to move again after shooting all rockets
         rocketsShot = 0;
         RocketTime = 0f;
-        agent.isStopped = false;
+        
+
+        // Set isRocketAttack to false when the rocket attack is completed
+        isRocketAttack = false;
+    }
+
+    // Add a getter method for isRocketAttack
+    public bool IsRocketAttack()
+    {
+        return isRocketAttack;
     }
 }

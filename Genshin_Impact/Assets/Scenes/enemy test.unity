@@ -147,13 +147,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67184599}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.32, y: 5.37, z: -0.27}
+  m_LocalRotation: {x: -0, y: -0, z: 0.15003726, w: 0.9886803}
+  m_LocalPosition: {x: -2.68, y: 6.51, z: -0.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5599098375800237608}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 17.258}
 --- !u!1 &414909332
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +262,7 @@ GameObject:
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!136 &483082122
@@ -514,13 +514,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179045627}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.14, y: 5.43, z: -0.97}
+  m_LocalRotation: {x: -0, y: -0, z: -0.17463638, w: 0.984633}
+  m_LocalPosition: {x: 1.74, y: 6.58, z: -0.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5599098375800237608}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20.115}
 --- !u!1 &1258228649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8094428060517842776, guid: c9c20446c7d34a74b87e8c2d9228e685,
@@ -831,9 +831,24 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 483082125}
+    - target: {fileID: 4660676226295766656, guid: c9c20446c7d34a74b87e8c2d9228e685,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 4.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355668380594441163, guid: c9c20446c7d34a74b87e8c2d9228e685,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 8074039372517049473, guid: c9c20446c7d34a74b87e8c2d9228e685,
         type: 3}
       propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074039372517049473, guid: c9c20446c7d34a74b87e8c2d9228e685,
+        type: 3}
+      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8173441311950051753, guid: c9c20446c7d34a74b87e8c2d9228e685,
