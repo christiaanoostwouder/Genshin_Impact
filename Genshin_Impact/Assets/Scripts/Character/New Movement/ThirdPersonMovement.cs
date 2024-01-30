@@ -1,11 +1,11 @@
 using Cinemachine;
-using System;
 using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
     [Header("References")]
     public CharacterController controller;
+    public Transform ruinDrake;
     public Transform cameraTransform; // Reference to the Maincamera's transform
     public GameObject bow;
     [SerializeField] CinemachineFreeLook VirtualCam3rd;
@@ -73,7 +73,7 @@ public class ThirdPersonMovement : MonoBehaviour
             float targetAngle = cameraTransform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            bow.transform.localRotation = Quaternion.Euler(cameraTransform.rotation.x , 15f, 0f);
+
         }
 
         if (inputDirection.magnitude >= 0.1f)
