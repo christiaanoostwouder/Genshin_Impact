@@ -707,22 +707,22 @@ PrefabInstance:
     - target: {fileID: 815638547904222579, guid: bebcfb3429ec9dd499fd4a5214b0c424,
         type: 3}
       propertyPath: EmissionModule.m_BurstCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 815638547904222579, guid: bebcfb3429ec9dd499fd4a5214b0c424,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 815638547904222579, guid: bebcfb3429ec9dd499fd4a5214b0c424,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 815638547904222579, guid: bebcfb3429ec9dd499fd4a5214b0c424,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 9.36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 815638547904222579, guid: bebcfb3429ec9dd499fd4a5214b0c424,
         type: 3}
@@ -732,17 +732,17 @@ PrefabInstance:
     - target: {fileID: 815638547904222579, guid: bebcfb3429ec9dd499fd4a5214b0c424,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 815638547904222579, guid: bebcfb3429ec9dd499fd4a5214b0c424,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].repeatInterval
-      value: 0.05
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 815638547904222579, guid: bebcfb3429ec9dd499fd4a5214b0c424,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4331282084383542459, guid: bebcfb3429ec9dd499fd4a5214b0c424,
         type: 3}
@@ -813,6 +813,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8321779154199764063, guid: bebcfb3429ec9dd499fd4a5214b0c424,
+        type: 3}
+      propertyPath: m_MinParticleSize
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1089,22 +1094,22 @@ PrefabInstance:
     - target: {fileID: 4213459430547383201, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016556061
+      value: 0.000000016556063
       objectReference: {fileID: 0}
     - target: {fileID: 4213459430547383201, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004685766
+      value: -0.0000000046857664
       objectReference: {fileID: 0}
     - target: {fileID: 5590316529737888290, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016468093
+      value: -0.00000001646809
       objectReference: {fileID: 0}
     - target: {fileID: 5590316529737888290, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000049861373
+      value: 0.000000004986136
       objectReference: {fileID: 0}
     - target: {fileID: 7125379013474537898, guid: 06f2d0a1e89474541ae95ac1b60efbf2,
         type: 3}
