@@ -41,6 +41,7 @@ public class shooting : MonoBehaviour
     void Fire(float damage)
     {
         Debug.Log("je hebt geschoten");
+        animator.SetTrigger("Shot");
         Vector3 shootDirection = cam.forward;
         GameObject ob = Instantiate(arrow, bow.position, Quaternion.LookRotation(shootDirection));
 

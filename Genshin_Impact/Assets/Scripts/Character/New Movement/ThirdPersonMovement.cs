@@ -60,6 +60,7 @@ public class ThirdPersonMovement : MonoBehaviour
             else if (inputDirection.magnitude == 0)
             {
                 speed = normSpeed;
+                animator.SetBool("Moving", true);
             }
         }
         // vertical velocity will never grow bigger than gravity itself
