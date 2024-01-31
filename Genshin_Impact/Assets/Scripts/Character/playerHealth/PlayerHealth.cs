@@ -1,22 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Animator animator;
     public float MaxHealth = 100f;
     public float CurrentHealth;
+    private bool dead = false;
     // Start is called before the first frame update
     void Start()
     {
         CurrentHealth = MaxHealth;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void TakeDamage(float damage)
     {
-        if (other.CompareTag("Rocket"))
+        CurrentHealth -= damage;
+
+        if (CurrentHealth <= 0 && !dead)
         {
-            
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        dead = true;
+        animator.SetTrigger("Die");
+        GetComponent<ThirdPersonMovement>().enabled = false;
     }
 }

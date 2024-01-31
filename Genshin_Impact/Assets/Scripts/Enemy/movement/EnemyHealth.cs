@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float MaxHealth = 100f;
+    public float MaxHealth;
     public float CurrentHealth;
+    public GameObject Parent;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         CurrentHealth -= damage;
+        Debug.Log(damage);
 
         if (CurrentHealth <= 0)
         {
@@ -24,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        Destroy(Parent);
     }
 
 }

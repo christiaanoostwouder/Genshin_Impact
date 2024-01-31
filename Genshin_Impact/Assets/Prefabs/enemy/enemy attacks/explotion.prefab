@@ -4899,6 +4899,7 @@ GameObject:
   - component: {fileID: 9222146690145065696}
   - component: {fileID: 7582117629946383500}
   - component: {fileID: 2944043030362209128}
+  - component: {fileID: 4314008315303501414}
   m_Layer: 0
   m_Name: explotion
   m_TagString: Untagged
@@ -5869,7 +5870,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 5
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -5919,7 +5920,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 1
+      cycleCount: 5
       repeatInterval: 0.01
       probability: 1
   SizeModule:
@@ -9724,7 +9725,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4874126678125670354, guid: ed9208f24fc315b4594e25835292fb67, type: 3}
+  - {fileID: 2100000, guid: 74e5a0aae6446d2418e7ac499eae4dbc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9777,3 +9778,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4314008315303501414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053408619982154329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7a17958a85cec43a9201e9bed33a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

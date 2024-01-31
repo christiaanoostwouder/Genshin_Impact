@@ -8,6 +8,7 @@ public class Rocket : MonoBehaviour
     public float destroyDelay = 20f;
 
     public ParticleSystem explEffect;
+    public GameObject explosion;
 
     private Rigidbody rocketRigidbody;
     private float accelerationTimer = 1f;
@@ -27,11 +28,13 @@ public class Rocket : MonoBehaviour
 
     private void Update()
     {
+        this.gameObject.transform.LookAt(player);
         if (player != null && rocketRigidbody != null)
         {
+
             if (shootingUp)
             {
-                this.gameObject.transform.LookAt(player);
+                
                 // Shoot up for the first second
                 rocketRigidbody.AddForce(Vector3.up * accelerationSpeed, ForceMode.Acceleration);
 
@@ -64,13 +67,11 @@ public class Rocket : MonoBehaviour
         // Check if the collision is with an object you want to destroy the rocket on
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            
-            explEffect.Play();
+            GameObject newObj = Instantiate(explosion, transform.position, Quaternion.identity);
             DestroyRocket();
         }
         else
         {
-            explEffect.Play();
             Destroy(gameObject, 10f);
         }
     }
@@ -78,6 +79,7 @@ public class Rocket : MonoBehaviour
     private void DestroyRocket()
     {
         // Add any cleanup or explosion effects here if needed
+
         Destroy(gameObject);
     }
 }

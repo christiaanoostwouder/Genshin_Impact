@@ -7,6 +7,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public CharacterController controller;
     public Transform ruinDrake;
     public Transform cameraTransform; // Reference to the Maincamera's transform
+    public GameObject ShootPoint;
     public GameObject bow;
     [SerializeField] private Animator animator;
     [SerializeField] CinemachineFreeLook VirtualCam3rd;
@@ -32,6 +33,8 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         CameraSwitch.shootingMode = false;
         Cursor.lockState = CursorLockMode.Locked;
+        bow.SetActive(false);
+
     }
 
     void Update()
@@ -43,7 +46,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            speed = normSpeed * CameraSwitch.SwitchCam(VirtualCam3rd, VirtualCamAttck, speed);
+            speed = normSpeed * CameraSwitch.SwitchCam(VirtualCam3rd, VirtualCamAttck, bow, animator, speed);
         }
 
         if (controller.isGrounded)
@@ -60,6 +63,7 @@ public class ThirdPersonMovement : MonoBehaviour
             else if (inputDirection.magnitude == 0)
             {
                 speed = normSpeed;
+                animator.SetBool("Moving", false);
             }
         }
         // vertical velocity will never grow bigger than gravity itself
@@ -74,7 +78,6 @@ public class ThirdPersonMovement : MonoBehaviour
             float targetAngle = cameraTransform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            animator.SetBool("ShootingAnim", true);
         }
 
         if (inputDirection.magnitude >= 0.1f)
@@ -85,6 +88,7 @@ public class ThirdPersonMovement : MonoBehaviour
             }
             else
             {
+                animator.SetBool("Moving", true);
                 ThirdPersonMove(inputDirection);
             }
         }
@@ -97,6 +101,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void ThirdPersonMove(Vector3 inputDirection)
     {
+
         float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);

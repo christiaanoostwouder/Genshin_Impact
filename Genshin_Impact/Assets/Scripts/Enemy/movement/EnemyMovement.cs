@@ -42,7 +42,6 @@ public class EnemyMovement : MonoBehaviour
         // Check if the rocket attack is happening, stop the agent if true
         if (dis <= 15 || attack.IsRocketAttack())
         {
-            Debug.Log("distance");
             agent.isStopped = true;
         }
         else

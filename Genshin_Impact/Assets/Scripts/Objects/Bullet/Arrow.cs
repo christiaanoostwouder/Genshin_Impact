@@ -20,9 +20,12 @@ public class Arrow : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-        Debug.Log(dmg);
-        enemyHealth.TakeDamage(dmg);
-        Destroy(gameObject);
+        if (other.CompareTag("Enemy"))
+        {
+            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            enemyHealth.TakeDamage(dmg);
+            Destroy(gameObject);
+        }
+        
     }
 }

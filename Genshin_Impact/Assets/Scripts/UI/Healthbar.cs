@@ -15,7 +15,7 @@ public class Healthbar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            UpdateHealthbar();
+        UpdateHealthbar();
     }
 
     public void SetMaxHealth(float maxHealth)
