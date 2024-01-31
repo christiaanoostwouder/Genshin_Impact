@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public Animator animator;
+    public GameObject bow;
     public float MaxHealth = 100f;
     public float CurrentHealth;
     private bool dead = false;
@@ -27,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        bow.SetActive(false);
         dead = true;
         GetComponent<AudioSource>().Stop();
         animator.SetTrigger("Die");
