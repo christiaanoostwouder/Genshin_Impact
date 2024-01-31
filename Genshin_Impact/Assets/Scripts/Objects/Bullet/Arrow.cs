@@ -5,6 +5,7 @@ public class Arrow : MonoBehaviour
     public float speed;
     private Rigidbody rb;
     public float dmg;
+    public GameObject HitMark;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class Arrow : MonoBehaviour
         {
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(dmg);
+            Instantiate(HitMark, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         

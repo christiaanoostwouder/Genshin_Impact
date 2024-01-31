@@ -7,6 +7,8 @@ public class shooting : MonoBehaviour
     [SerializeField] private Transform bow;
     [SerializeField] private Transform cam;
     [SerializeField] private Animator animator;
+    public AudioSource bowSource;
+    public AudioClip chargestart, chargeloop, chargerelease;
 
     [Header("Damage")]
     [SerializeField] private float baseDmg;
@@ -16,6 +18,8 @@ public class shooting : MonoBehaviour
     [Header("Reload")]
     [SerializeField] private float coolDown;
     private bool canFire = true;
+    private bool chargeStartPlayed = true;
+    private bool chargeReleasePlayed = false;
 
     private bool ChargingState;
     private bool ReleaseState;
@@ -25,6 +29,21 @@ public class shooting : MonoBehaviour
     {
         if (CameraSwitch.shootingMode == true)
         {
+            if(chargeStartPlayed == true)
+            {
+                chargeStartPlayed = false;
+                ChargeStart();
+            }
+            if (chargeStartPlayed == false)
+            {
+                if (bowSource.isPlaying == false) { ChargeLoop(); }
+            }
+
+            if (chargeReleasePlayed == true)
+            {
+                if (bowSource.isPlaying == false) { chargeStartPlayed = true; }
+            }
+
             if (dmgMult <= maxDmgMult)
             {
                 dmgMult += 1 * Time.deltaTime;
@@ -33,9 +52,29 @@ public class shooting : MonoBehaviour
             if (Input.GetMouseButtonUp(0) && canFire)
             {
                 Fire(baseDmg * dmgMult);
+                ChargeRelease();
             }
 
         }
+    }
+
+    private void ChargeStart()
+    {
+        Debug.Log("gedaan");
+        bowSource.PlayOneShot(chargestart);
+    }
+
+    private void ChargeLoop()
+    {
+        bowSource.clip = chargeloop;
+        bowSource.Play();
+    }
+
+    private void ChargeRelease()
+    {
+        bowSource.Stop();
+        bowSource.PlayOneShot(chargerelease);
+        chargeReleasePlayed = true;
     }
 
     void Fire(float damage)

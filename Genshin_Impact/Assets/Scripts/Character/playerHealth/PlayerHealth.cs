@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         dead = true;
+        GetComponent<AudioSource>().Stop();
         animator.SetTrigger("Die");
         GetComponent<ThirdPersonMovement>().enabled = false;
     }

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 60
   dmg: 0
+  HitMark: {fileID: 3053408619982154329, guid: 1956cda62e0caeb4ebdb8a7988fe1322, type: 3}
 --- !u!198 &815638547904222579
 ParticleSystem:
   m_ObjectHideFlags: 0

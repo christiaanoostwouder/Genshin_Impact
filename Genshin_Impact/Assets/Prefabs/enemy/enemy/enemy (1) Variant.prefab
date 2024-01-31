@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 20000
   CurrentHealth: 0
-  Parent: {fileID: 0}
+  Parent: {fileID: 1010464168416122127}
 --- !u!1 &462112244176100695
 GameObject:
   m_ObjectHideFlags: 0
